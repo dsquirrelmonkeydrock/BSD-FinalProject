@@ -28,10 +28,30 @@ public class FisherController {
     this.fisherRepo = fisherRepo;
   }
   
-  //create fisher API
+  //create fisher
   @PostMapping()
   public ResponseEntity<Fisher> saveFisher(@RequestBody Fisher fisher){
     return new ResponseEntity<Fisher>(fisherService.saveFisher(fisher), HttpStatus.CREATED);
   }
+  
+  //get all fishers
+  @GetMapping
+  public List<Fisher> getAllFishers(){
+  return fisherService.getAllFishers(); 
+  }
+
+  //deletes fisher
+  @DeleteMapping("{id}")
+  public ResponseEntity<String> deleteFisher(@PathVariable int id, @RequestBody Fisher fisher) {
+    fisherService.deleteFisher(fisher, id);
+  return new ResponseEntity<String>("Fisher with id:  "+ id + " was deleted", HttpStatus.OK);
+  }
+  
+  //edits fisher
+  @PutMapping("{id}")
+  public ResponseEntity<Fisher> editConcertAttendee(@PathVariable int id, @RequestBody Fisher fisher) {
+  return new ResponseEntity<Fisher>(fisherService.editFisher(fisher, id), HttpStatus.OK);
+  }
+
 
 }
