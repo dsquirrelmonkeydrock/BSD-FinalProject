@@ -26,7 +26,7 @@ PRIMARY KEY (fish_species_id)
 CREATE TABLE BodyOfWater(
 body_of_water_id int NOT NULL AUTO_INCREMENT,
 state varchar(45) NOT NULL,
-depth_in_feet decimal(9, 2),
+depth_in_feet int,
 PRIMARY KEY (body_of_water_id)
 );
 
